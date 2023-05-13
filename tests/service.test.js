@@ -1,14 +1,14 @@
 const { processOrders } = require('../service');
 
-let filePath = 'tests/correct_orders.csv';
+let filePath = 'tests/test_assets/correct_orders.csv';
 
 afterEach(() => {
-  filePath = 'tests/correct_orders.csv';
+  filePath = 'tests/test_assets/correct_orders.csv';
 });
 
 describe('processOrders', () => {
   test('should return correct result status and data', async () => {
-    filePath = 'tests/correct_orders.csv';
+    filePath = 'tests/test_assets/correct_orders.csv';
     const processedOrders = await processOrders(filePath);
     expect(processedOrders.success).toBe(true);
     expect(processedOrders.data.length).toBeGreaterThan(0);
