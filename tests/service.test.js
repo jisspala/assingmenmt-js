@@ -19,4 +19,16 @@ describe('processOrders', () => {
     expect(processedOrders.success).toBe(false);
     expect(processedOrders.message).toBe('error in orderFile file reading');
   });
+  test('should return error message and status when order bonus_ratio is zero', async () => {
+    filePath = 'tests/test_assets/orders_zero_bonus_ratio.csv';
+    const processedOrders = await processOrders(filePath);
+    expect(processedOrders.success).toBe(false);
+    expect(processedOrders.message).toBe('orders are not valid');
+  });
+  test('should return error message and status when order price is invalid', async () => {
+    filePath = 'tests/test_assets/orders_invalid_price.csv';
+    const processedOrders = await processOrders(filePath);
+    expect(processedOrders.success).toBe(false);
+    expect(processedOrders.message).toBe('orders are not valid');
+  });
 });

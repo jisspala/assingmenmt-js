@@ -1,4 +1,4 @@
-const { readCSV } = require('./utils');
+const { readCSV, validateOrders } = require('./utils');
 const { availableOrgans, promotionScheme } = require('./config');
 
 const formatOrder = (result) => {
@@ -47,19 +47,27 @@ exports.processOrders = async (orderFile) => {
   const csvResult = await readCSV(orderFile);
   if (csvResult.success) {
     const finalResults = [];
+    const isValidOrders = validateOrders(csvResult.data);
 
-    for (const order of csvResult.data) {
-      // Calculating and applying the bonus
-      const calculatedResult = calculateOrder(order);
-      //Formating the w.r.t. output
-      const formatedResult = formatOrder(calculatedResult);
-      finalResults.push(formatedResult);
+    if (isValidOrders) {
+      for (const order of csvResult.data) {
+        // Calculating and applying the bonus
+        const calculatedResult = calculateOrder(order);
+        //Formating the w.r.t. output
+        const formatedResult = formatOrder(calculatedResult);
+        finalResults.push(formatedResult);
+      }
+
+      processedResult = {
+        success: true,
+        data: finalResults,
+      };
+    } else {
+      processedResult = {
+        success: false,
+        message: 'orders are not valid',
+      };
     }
-
-    processedResult = {
-      success: true,
-      data: finalResults,
-    };
   } else {
     processedResult = {
       success: false,
