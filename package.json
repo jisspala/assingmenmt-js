@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/jisspala/assingmenmt-js#readme",
   "dependencies": {
-    "csv-parse": "^5.3.10"
+    "csv-parse": "^4.8.8"
   },
   "devDependencies": {
     "eslint": "^8.40.0",
