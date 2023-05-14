@@ -1,13 +1,14 @@
-const { readCSV, validateOrders } = require('./utils');
 const { availableOrgans, promotionScheme } = require('./config');
+const constants = require('./utils/stringConstants');
+const { readCSV, validateOrders } = require('./utils');
 
 const formatOrder = (result) => {
-  const formatedResult = [];
+  const formattedResult = [];
 
   for (const [key, value] of Object.entries(result)) {
-    formatedResult.push(`${key}: ${value}`);
+    formattedResult.push(`${key}: ${value}`);
   }
-  return formatedResult;
+  return formattedResult;
 };
 
 const calculateOrder = (order) => {
@@ -54,8 +55,8 @@ exports.processOrders = async (orderFile) => {
         // Calculating and applying the bonus
         const calculatedResult = calculateOrder(order);
         //Formating the w.r.t. output
-        const formatedResult = formatOrder(calculatedResult);
-        finalResults.push(formatedResult);
+        const formattedResult = formatOrder(calculatedResult);
+        finalResults.push(formattedResult);
       }
 
       processedResult = {
@@ -65,13 +66,13 @@ exports.processOrders = async (orderFile) => {
     } else {
       processedResult = {
         success: false,
-        message: 'orders are not valid',
+        message: constants.INVALID_ORDERS,
       };
     }
   } else {
     processedResult = {
       success: false,
-      message: 'error in orderFile file reading',
+      message: constants.INVALID_CSV,
     };
   }
   return processedResult;
