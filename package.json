@@ -1,0 +1,32 @@
+{
+  "name": "assingmenmt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "eslint --ext .js ./",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest -c jest.config.js",
+    "test:coverage": "jest --coverage -c jest.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jisspala/assingmenmt-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jisspala/assingmenmt-js/issues"
+  },
+  "homepage": "https://github.com/jisspala/assingmenmt-js#readme",
+  "dependencies": {
+    "csv-parse": "^4.8.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "nodemon": "^2.0.22",
+    "test": "^3.3.0"
+  }
+}
