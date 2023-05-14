@@ -1,5 +1,5 @@
 const { availableOrgans, promotionScheme } = require('./config');
-const constants = require('./utils/stringConstants');
+const { constants } = require('./utils/stringConstants');
 const { readCSV, validateOrders } = require('./utils');
 
 const formatOrder = (result) => {

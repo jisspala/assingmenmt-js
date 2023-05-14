@@ -1,7 +1,7 @@
 const fs = require('fs');
 const parse = require('csv-parse/lib/sync');
 
-const constants = require('./stringConstants');
+const { constants } = require('./stringConstants');
 
 exports.readCSV = async function (filename) {
   let data;

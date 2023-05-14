@@ -1,5 +1,5 @@
 const { processOrders } = require('../service');
-const constants = require('../utils/stringConstants');
+const { constants } = require('../utils/stringConstants');
 
 let filePath = 'tests/test_assets/correct_orders.csv';
 
